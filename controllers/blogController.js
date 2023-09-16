@@ -3,34 +3,30 @@ const Blog = require("../models/blogModel");
 // @desc    Get all blogs
 // @route   GET /api/products
 // @access  Public
-const getBlogs = asyncHandler(async (req, res) => {
+const getBlogs = async (req, res) => {
   const blogs = await Blog.find();
 
   res.status(200).json(blogs);
-});
-
-// @desc    Fetch single product
-// @route   GET /api/products/:id
+}
+ 
+// @desc    Get one blog
+// @route   GET /api/blogs/:id
 // @access  Public
-const getProductById = asyncHandler(async (req, res) => {
-  // NOTE: checking for valid ObjectId to prevent CastError moved to separate
-  // middleware. See README for more info.
+const getBlogById = async (req, res) => {
 
-  const product = await Product.findById(req.params.id);
-  if (product) {
-    return res.json(product);
+  const blog = await Blog.findById(req.params.id);
+  if (blog) {
+    return res.json(blog);
   } else {
-    // NOTE: this will run if a valid ObjectId but no product was found
-    // i.e. product may be null
     res.status(404);
     throw new Error("Product not found");
   }
-});
+};
 
 // @desc    Create a product
 // @route   POST /api/products
 // @access  Private/Admin
-const createProduct = asyncHandler(async (req, res) => {
+const createBlog = asyncHandler(async (req, res) => {
   const product = new Product({
     name: "Sample name",
     price: 0,
@@ -88,62 +84,12 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Create new review
-// @route   POST /api/products/:id/reviews
-// @access  Private
-const createProductReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
-
-  const product = await Product.findById(req.params.id);
-
-  if (product) {
-    const alreadyReviewed = product.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
-    );
-
-    if (alreadyReviewed) {
-      res.status(400);
-      throw new Error("Product already reviewed");
-    }
-
-    const review = {
-      name: req.user.name,
-      rating: Number(rating),
-      comment,
-      user: req.user._id,
-    };
-
-    product.reviews.push(review);
-
-    product.numReviews = product.reviews.length;
-
-    product.rating =
-      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      product.reviews.length;
-
-    await product.save();
-    res.status(201).json({ message: "Review added" });
-  } else {
-    res.status(404);
-    throw new Error("Product not found");
-  }
-});
-
-// @desc    Get top rated products
-// @route   GET /api/products/top
-// @access  Public
-const getTopProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
-
-  res.json(products);
-});
+/
 
 export {
   getBlogs,
-  getProductById,
+  getBlogById,
   createProduct,
   updateProduct,
   deleteProduct,
-  createProductReview,
-  getTopProducts,
 };
