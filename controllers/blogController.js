@@ -1,8 +1,7 @@
 const Blog = require("../models/blogModel");
 
 // @desc    Get all blogs
-// @route   GET /api/products
-// @access  Public
+// @route   GET /api/blogs
 const getBlogs = async (req, res) => {
   const blogs = await Blog.find();
 
@@ -11,22 +10,22 @@ const getBlogs = async (req, res) => {
 
 // @desc    Get one blog
 // @route   GET /api/blogs/:id
-// @access  Public
 const getBlogById = async (req, res) => {};
 
-// @desc    Create a product
-// @route   POST /api/products
-// @access  Private/Admin
+// @desc    Create a blog
+// @route   POST /api/blogs
+
+// Rayhana
 const createBlog = async (req, res) => {};
 
-// @desc    Update a product
-// @route   PUT /api/products/:id
-// @access  Private/Admin
-const updateProduct = async (req, res) => {};
+// @desc    Update a blog
+// @route   PUT /api/blogs/:id
+const updateBlog = async (req, res) => {};
 
-// @desc    Delete a product
-// @route   DELETE /api/products/:id
-// @access  Private/Admin
-const deleteProduct = async (req, res) => {};
+// @desc    Delete a blog
+// @route   DELETE /api/blogs/:id
 
-export { getBlogs, getBlogById, createBlog, updateProduct, deleteProduct };
+// Rayhana
+const deleteBlog = async (req, res) => {};
+
+export { getBlogs, getBlogById, createBlog, updateBlog, deleteBlog };
