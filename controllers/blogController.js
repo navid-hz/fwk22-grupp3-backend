@@ -29,4 +29,4 @@ const updateProduct = async (req, res) => {};
 // @access  Private/Admin
 const deleteProduct = async (req, res) => {};
 
-export { getBlogs, getBlogById, createProduct, updateProduct, deleteProduct };
+export { getBlogs, getBlogById, createBlog, updateProduct, deleteProduct };
