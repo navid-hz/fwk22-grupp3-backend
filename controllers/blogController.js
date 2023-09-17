@@ -15,8 +15,23 @@ const getBlogById = async (req, res) => {};
 // @desc    Create a blog
 // @route   POST /api/blogs
 
-// Rayhana
-const createBlog = async (req, res) => {};
+const createBlog = async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    const newBlog = new Blog({
+      title,
+      content,
+    });
+
+    await newBlog.save();
+    res.status(201).json(newBlog);
+  } 
+  
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Server error" });
+  }
+};
 
 // @desc    Update a blog
 // @route   PUT /api/blogs/:id
