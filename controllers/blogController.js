@@ -16,8 +16,8 @@ const getBlogById = async (req, res) => {};
 // @route   POST /api/blogs
 
 const createBlog = async (req, res) => {
+  const { title, content } = req.body;
   try {
-    const { title, content } = req.body;
     const newBlog = new Blog({
       title,
       content,
@@ -25,9 +25,7 @@ const createBlog = async (req, res) => {
 
     await newBlog.save();
     res.status(201).json(newBlog);
-  } 
-  
-  catch (error) {
+  } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
   }
