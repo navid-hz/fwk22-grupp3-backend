@@ -41,4 +41,4 @@ const updateBlog = async (req, res) => {};
 // Rayhana
 const deleteBlog = async (req, res) => {};
 
-export { getBlogs, getBlogById, createBlog, updateBlog, deleteBlog };
+module.exports = { getBlogs, getBlogById, createBlog, updateBlog, deleteBlog };
