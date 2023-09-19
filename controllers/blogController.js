@@ -1,7 +1,7 @@
 const Blog = require("../models/blogModel");
 
 // @desc    Get all blogs
-// @route   GET /api/blogs
+// @route   GET /blogs
 const getBlogs = async (req, res) => {
   const blogs = await Blog.find();
 
@@ -11,12 +11,11 @@ const getBlogs = async (req, res) => {
 };
 
 // @desc    Get one blog
-// @route   GET /api/blogs/:id
+// @route   GET /blogs/:id
 const getBlogById = async (req, res) => {};
 
 // @desc    Create a blog
-// @route   POST /api/blogs
-
+// @route   POST /blogs
 const createBlog = async (req, res) => {
   const { title, content } = req.body;
 
@@ -35,11 +34,11 @@ const createBlog = async (req, res) => {
 };
 
 // @desc    Update a blog
-// @route   PUT /api/blogs/:id
+// @route   PUT /blogs/:id
 const updateBlog = async (req, res) => {};
 
 // @desc    Delete a blog
-// @route   DELETE /api/blogs/:id
+// @route   DELETE /blogs/:id
 
 // Rayhana
 const deleteBlog = async (req, res) => {};
