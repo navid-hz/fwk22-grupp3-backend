@@ -5,6 +5,8 @@ const Blog = require("../models/blogModel");
 const getBlogs = async (req, res) => {
   const blogs = await Blog.find();
 
+  console.log(blogs);
+
   res.status(200).json(blogs);
 };
 
@@ -17,6 +19,7 @@ const getBlogById = async (req, res) => {};
 
 const createBlog = async (req, res) => {
   const { title, content } = req.body;
+
   try {
     const newBlog = new Blog({
       title,
