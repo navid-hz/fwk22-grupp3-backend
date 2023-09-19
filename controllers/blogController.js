@@ -40,7 +40,17 @@ const updateBlog = async (req, res) => {};
 // @desc    Delete a blog
 // @route   DELETE /blogs/:id
 
-// Rayhana
-const deleteBlog = async (req, res) => {};
+
+const deleteBlog = async (req, res) => {
+  try {
+    const blogId = req.params.id;
+    
+
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error'});
+  }
+};
 
 module.exports = { getBlogs, getBlogById, createBlog, updateBlog, deleteBlog };
