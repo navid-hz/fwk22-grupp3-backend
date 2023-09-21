@@ -12,7 +12,16 @@ const getBlogs = async (req, res) => {
 
 // @desc    Get one blog
 // @route   GET /blogs/:id
-const getBlogById = async (req, res) => {};
+const getBlogById = async (req, res) => {
+  const blog = await Blog.findById(req.params.id);
+
+  if (blog) {
+    return res.json(blog);
+  } else {
+    res.status(404);
+    throw new Error("Blog not found");
+  }
+};
 
 // @desc    Create a blog
 // @route   POST /blogs
