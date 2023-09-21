@@ -35,6 +35,8 @@ const createBlog = async (req, res) => {
 
 // @desc    Update a blog
 // @route   PUT /blogs/:id
+
+// Linn
 const updateBlog = async (req, res) => {};
 
 // @desc    Delete a blog
