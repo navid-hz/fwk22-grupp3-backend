@@ -35,7 +35,28 @@ const createBlog = async (req, res) => {
 
 // @desc    Update a blog
 // @route   PUT /blogs/:id
-const updateBlog = async (req, res) => {};
+const updateBlog = async (req, res) => {
+  try {
+    const blogId = req.params.id
+    const { title, content } = req.body
+
+    const blog = await Blog.findById(blogId)
+
+    if (!blog) {
+      return res.status(404).json({ error: 'Blogpost not found' })
+    }
+
+    blog.title = title
+    blog.content = content
+
+    await blog.save()
+
+    res.status(200).json(blog)
+  } catch (error) {
+    console.error(error)
+    res.status(500).json({ error: 'Server Error'})
+  }
+};
 
 // @desc    Delete a blog
 // @route   DELETE /blogs/:id
