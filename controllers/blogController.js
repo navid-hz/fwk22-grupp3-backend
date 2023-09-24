@@ -73,6 +73,12 @@ const updateBlog = async (req, res) => {
 const deleteBlog = async (req, res) => {
   try {
     const blogId = req.params.id;
+    const deleteBlog = await Blog.findById(blogId);
+
+    if (!deleteBlog) {
+      return res.status(404).json({ error: 'Blog post not found'});
+    }
+    res.status(204).end();
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });
