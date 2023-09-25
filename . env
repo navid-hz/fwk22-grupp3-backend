@@ -1,2 +1,0 @@
-PORT=5000
-MONGO_URI=mongodb+srv://Sina:blog123@blog-app.dsbfodr.mongodb.net/blog-app
