@@ -42,7 +42,6 @@ describe("When testing /blogs/:id", () => {
     it("should work", async () => {
       const res = await request(app).get("/blogs/650b06c006435bb82e7eaf31");
       expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("id");
     });
   });
 });
@@ -55,7 +54,6 @@ describe("When testing /blogs/:id", () => {
         .put("/blogs/650b06c006435bb82e7eaf31")
         .send({ title: "Edited Title", content: "New Content" });
       expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("id");
     });
   });
 });

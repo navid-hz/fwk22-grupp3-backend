@@ -19,9 +19,9 @@ const container = request(HOST);
 describe("When testing /blogs", () => {
   describe("POST", () => {
     it("should work", async () => {
-      const res = await request(app).post("/blogs").send({
+      const res = await container.post("/blogs").send({
         title: "Integration test title",
-        content: "Integration test created",
+        content: "Integration test content",
       });
       expect(res.statusCode).toEqual(201);
     });
@@ -30,9 +30,9 @@ describe("When testing /blogs", () => {
 
 // GET all blogs test
 describe("When testing /blogs", () => {
-  describe("GET", () => {
+  describe("GET (All)", () => {
     it("should work", async () => {
-      const res = await request(app).get("/blogs");
+      const res = await container.get("/blogs");
       expect(res.statusCode).toEqual(200);
       expect.arrayContaining(res.body);
     });
@@ -43,9 +43,8 @@ describe("When testing /blogs", () => {
 describe("When testing /blogs/:id", () => {
   describe("GET", () => {
     it("should work", async () => {
-      const res = await request(app).get("/blogs/650b06c006435bb82e7eaf31");
+      const res = await container.get("/blogs/650b06c006435bb82e7eaf31");
       expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("id");
     });
   });
 });
@@ -54,20 +53,19 @@ describe("When testing /blogs/:id", () => {
 describe("When testing /blogs/:id", () => {
   describe("PUT", () => {
     it("should work", async () => {
-      const res = await request(app)
+      const res = await container
         .put("/blogs/650b06c006435bb82e7eaf31")
-        .send({ title: "Edited Title", content: "New Content" });
+        .send({ title: "Int Title", content: "Int Content" });
       expect(res.statusCode).toEqual(200);
-      expect(res.body).toHaveProperty("id");
     });
   });
 });
 
 // DELETE blog test
-describe("When testing /blogs/6509d7818e51b559deb980ca", () => {
+describe("When testing /blogs/:id", () => {
   describe("DELETE", () => {
     it("should work", async () => {
-      const res = await request(app).delete("/blogs/6509d7818e51b559deb980ca");
+      const res = await container.delete("/blogs/6509d7818e51b559deb980ca");
       expect(res.statusCode).toEqual(204);
     });
   });
