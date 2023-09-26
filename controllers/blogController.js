@@ -76,7 +76,7 @@ const deleteBlog = async (req, res) => {
     const deleteBlog = await Blog.findById(blogId);
 
     if (!deleteBlog) {
-      return res.status(404).json({ error: 'Blog post not found'});
+      return res.status(404).json({ error: "Blog post not found" });
     }
     res.status(204).end();
   } catch (error) {
