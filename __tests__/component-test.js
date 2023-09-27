@@ -13,13 +13,13 @@
 const request = require("supertest");
 const app = require("../server");
 
-// GET create blog test
+// POST create blog test
 describe("When testing /blogs", () => {
   describe("POST", () => {
     it("should work", async () => {
       const res = await request(app)
         .post("/blogs")
-        .send({ title: "Sample Title", content: "A content for test" });
+        .send({ title: "Food", content: "Food Blog" });
       expect(res.statusCode).toEqual(201);
     });
   });
@@ -40,7 +40,7 @@ describe("When testing /blogs", () => {
 describe("When testing /blogs/:id", () => {
   describe("GET", () => {
     it("should work", async () => {
-      const res = await request(app).get("/blogs/650b06c006435bb82e7eaf31");
+      const res = await request(app).get("/blogs/65146916aabcbbdf613dd59e");
       expect(res.statusCode).toEqual(200);
     });
   });
@@ -51,18 +51,18 @@ describe("When testing /blogs/:id", () => {
   describe("PUT", () => {
     it("should work", async () => {
       const res = await request(app)
-        .put("/blogs/650b06c006435bb82e7eaf31")
-        .send({ title: "Edited Title", content: "New Content" });
+        .put("/blogs/65146916aabcbbdf613dd59e")
+        .send({ title: "Food Blog", content: "New Content" });
       expect(res.statusCode).toEqual(200);
     });
   });
 });
 
 // DELETE blog test
-describe("When testing /blogs/6509d7818e51b559deb980ca", () => {
+describe("When testing /blogs/65146916aabcbbdf613dd59e", () => {
   describe("DELETE", () => {
     it("should work", async () => {
-      const res = await request(app).delete("/blogs/6509d7818e51b559deb980ca");
+      const res = await request(app).delete("/blogs/65146916aabcbbdf613dd59e");
       expect(res.statusCode).toEqual(204);
     });
   });
