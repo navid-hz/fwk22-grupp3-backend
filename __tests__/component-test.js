@@ -13,7 +13,7 @@
 const request = require("supertest");
 const app = require("../server");
 
-// GET create blog test
+// POST create blog test
 describe("When testing /blogs", () => {
   describe("POST", () => {
     it("should work", async () => {
