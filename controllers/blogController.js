@@ -72,13 +72,13 @@ const updateBlog = async (req, res) => {
 
 const deleteBlog = async (req, res) => {
   try {
-    const blogId = req.params.id;
-    const result = await Blog.deleteOne({_id: blogId});
+    const blogId = await Blog.findById(req.params.id);
 
-    if (!result) {
+    if (!blogId) {
       return res.status(400).json({ error: "Blog post not found" });
     }
-    res.status(204).json({ message: "Blog deleted" });
+    await Blog.deleteOne();
+    res.status(200).json({ message: "Blog deleted" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Server error" });

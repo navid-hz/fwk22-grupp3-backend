@@ -43,7 +43,7 @@ describe("When testing /blogs", () => {
 describe("When testing /blogs/:id", () => {
   describe("GET", () => {
     it("should work", async () => {
-      const res = await container.get("/blogs/650b06c006435bb82e7eaf31");
+      const res = await container.get("/blogs/65148402cfa32d8684c8010d");
       expect(res.statusCode).toEqual(200);
     });
   });
@@ -54,8 +54,8 @@ describe("When testing /blogs/:id", () => {
   describe("PUT", () => {
     it("should work", async () => {
       const res = await container
-        .put("/blogs/650b06c006435bb82e7eaf31")
-        .send({ title: "Int Title", content: "Int Content" });
+        .put("/blogs/65148402cfa32d8684c8010d")
+        .send({ title: "Int edited Title", content: "Int edited Content" });
       expect(res.statusCode).toEqual(200);
     });
   });
@@ -65,8 +65,8 @@ describe("When testing /blogs/:id", () => {
 describe("When testing /blogs/:id", () => {
   describe("DELETE", () => {
     it("should work", async () => {
-      const res = await container.delete("/blogs/6509d7818e51b559deb980ca");
-      expect(res.statusCode).toEqual(204);
+      const res = await container.delete("/blogs/651486de7ec1ab1e5fedbf62");
+      expect(res.statusCode).toEqual(200);
     });
   });
 });
