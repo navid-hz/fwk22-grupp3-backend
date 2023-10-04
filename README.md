@@ -27,8 +27,4 @@ npm start
 
 npm run server
 
-### Connet to database
-
-add .env file in root and your database connection in it
-
 The server will start, and you should see a message in the console indicating that the server is running and listening on a specific port (e.g., Server is running on port 5000).
